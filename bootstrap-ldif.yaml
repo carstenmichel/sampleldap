@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bootstrap
+  namespace: ldap
+data:
+  bootstrap.ldif: |
+    dn: dc=example,dc=org
+    objectClass: dcObject
+    objectClass: organization
+    dc: example
+    o: example
+
+    dn: ou=users,dc=example,dc=org
+    objectClass: organizationalUnit
+    ou: users
+
+    dn: cn=user01,ou=users,dc=example,dc=org
+    cn: User1
+    cn: user01
+    sn: Bar1
+    objectClass: inetOrgPerson
+    objectClass: posixAccount
+    objectClass: shadowAccount
+    userPassword:: Yml0bmFtaTE=
+    uid: user01
+    uidNumber: 1000
+    gidNumber: 1000
+    homeDirectory: /home/user01
+
+    dn: cn=user02,ou=users,dc=example,dc=org
+    cn: User2
+    cn: user02
+    sn: Bar2
+    objectClass: inetOrgPerson
+    objectClass: posixAccount
+    objectClass: shadowAccount
+    userPassword:: Yml0bmFtaTI=
+    uid: user02
+    uidNumber: 1001
+    gidNumber: 1001
+    homeDirectory: /home/user02
+
+    dn: cn=readers,ou=users,dc=example,dc=org
+    cn: readers
+    objectClass: groupOfNames
+    member: cn=user01,ou=users,dc=example,dc=org
+    member: cn=user02,ou=users,dc=example,dc=org
+
+    dn: ou=people,dc=example,dc=org
+    objectClass: organizationalUnit
+    description: All people in organization
+    ou: people
+
+    dn: ou=groups,dc=example,dc=org
+    objectClass: organizationalUnit
+    objectClass: top
+    ou: groups
+
+    dn: uid=app,ou=people,dc=example,dc=org
+    objectClass: inetOrgPerson
+    objectClass: organizationalPerson
+    objectClass: person
+    objectClass: top
+    cn: appCN
+    sn: appSN
+    uid: app
+    userPassword:: YXBw
+
+    dn: uid=admin,ou=people,dc=example,dc=org
+    objectClass: inetOrgPerson
+    objectClass: organizationalPerson
+    objectClass: person
+    objectClass: top
+    cn: adminCN
+    sn: adminSN
+    uid: admin
+    userPassword:: YWRtaW4=
+
+    dn: uid=dev,ou=people,dc=example,dc=org
+    objectClass: inetOrgPerson
+    objectClass: organizationalPerson
+    objectClass: person
+    objectClass: top
+    cn: devCN
+    sn: devSN
+    uid: dev
+    userPassword:: YWRtaW4=
+
+    dn: cn=admins,ou=groups,dc=example,dc=org
+    objectClass: groupOfUniqueNames
+    objectClass: top
+    cn: admins
+    uniqueMember: uid=admin,ou=people,dc=example,dc=org
+
+    dn: cn=apps,ou=groups,dc=example,dc=org
+    objectClass: groupOfUniqueNames
+    objectClass: top
+    cn: apps
+    uniqueMember: uid=app,ou=people,dc=example,dc=org
+
+    dn: cn=devs,ou=groups,dc=example,dc=org
+    objectClass: groupOfUniqueNames
+    objectClass: top
+    cn: devs
+    uniqueMember: uid=dev,ou=people,dc=example,dc=org
