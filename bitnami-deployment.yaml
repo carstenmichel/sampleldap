@@ -19,9 +19,7 @@ spec:
           image: bitnami/openldap:2
           ports:
             - containerPort: 1389
-              name: openldap
-            - containerPort: 1636
-              name: openldaps  
+              name: openldap  
           env:
             - name: LDAP_ADMIN_USERNAME
               value: "admin"
