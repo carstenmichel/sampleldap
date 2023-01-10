@@ -13,7 +13,19 @@ data:
 
     dn: ou=users,dc=example,dc=org
     objectClass: organizationalUnit
+    description: Users in the org
     ou: users
+
+    dn: ou=people,dc=example,dc=org
+    objectClass: organizationalUnit
+    description: All people in organization
+    ou: people
+
+    dn: ou=groups,dc=example,dc=org
+    objectClass: organizationalUnit
+    objectClass: top
+    ou: groups
+
 
     dn: cn=user01,ou=users,dc=example,dc=org
     cn: User1
@@ -41,66 +53,79 @@ data:
     gidNumber: 1001
     homeDirectory: /home/user02
 
-    dn: cn=readers,ou=users,dc=example,dc=org
+    dn: uid=application,ou=people,dc=example,dc=org
+    objectClass: inetOrgPerson
+    objectClass: organizationalPerson
+    objectClass: person
+    objectClass: top
+    cn: application
+    sn: application
+    uid: application
+    userPassword:: YXBw
+
+    dn: uid=apiadmin,ou=people,dc=example,dc=org
+    objectClass: inetOrgPerson
+    objectClass: organizationalPerson
+    objectClass: person
+    objectClass: top
+    cn: apiadmin
+    sn: apiadmin
+    uid: apiadmin
+    userPassword:: YWRtaW4=
+
+    dn: uid=developer,ou=people,dc=example,dc=org
+    objectClass: inetOrgPerson
+    objectClass: organizationalPerson
+    objectClass: person
+    objectClass: top
+    cn: developer
+    sn: developer
+    uid: developer
+    userPassword:: e1NTSEF9cThhMWVuQWFncElsb3grWm5MQ09PMWJDVnJUcklRWDc=
+
+    dn: uid=developer2,ou=people,dc=example,dc=org
+    objectClass: inetOrgPerson
+    objectClass: organizationalPerson
+    objectClass: person
+    objectClass: top
+    cn: developer2
+    sn: developer2
+    uid: developer2
+    userPassword:: e1NTSEF9cThhMWVuQWFncElsb3grWm5MQ09PMWJDVnJUcklRWDc=
+
+    dn: uid=developer3,ou=people,dc=example,dc=org
+    objectClass: inetOrgPerson
+    objectClass: organizationalPerson
+    objectClass: person
+    objectClass: top
+    cn: developer3
+    sn: developer3
+    uid: developer3
+    userPassword:: e1NTSEF9cThhMWVuQWFncElsb3grWm5MQ09PMWJDVnJUcklRWDc=
+
+    dn: cn=readers,ou=groups,dc=example,dc=org
     cn: readers
     objectClass: groupOfNames
     member: cn=user01,ou=users,dc=example,dc=org
     member: cn=user02,ou=users,dc=example,dc=org
 
-    dn: ou=people,dc=example,dc=org
-    objectClass: organizationalUnit
-    description: All people in organization
-    ou: people
-
-    dn: ou=groups,dc=example,dc=org
-    objectClass: organizationalUnit
-    objectClass: top
-    ou: groups
-
-    dn: uid=app,ou=people,dc=example,dc=org
-    objectClass: inetOrgPerson
-    objectClass: organizationalPerson
-    objectClass: person
-    objectClass: top
-    cn: appCN
-    sn: appSN
-    uid: app
-    userPassword:: YXBw
-
-    dn: uid=admin,ou=people,dc=example,dc=org
-    objectClass: inetOrgPerson
-    objectClass: organizationalPerson
-    objectClass: person
-    objectClass: top
-    cn: adminCN
-    sn: adminSN
-    uid: admin
-    userPassword:: YWRtaW4=
-
-    dn: uid=dev,ou=people,dc=example,dc=org
-    objectClass: inetOrgPerson
-    objectClass: organizationalPerson
-    objectClass: person
-    objectClass: top
-    cn: devCN
-    sn: devSN
-    uid: dev
-    userPassword:: YWRtaW4=
-
     dn: cn=admins,ou=groups,dc=example,dc=org
-    objectClass: groupOfUniqueNames
+    objectClass: groupOfNames
     objectClass: top
     cn: admins
-    uniqueMember: uid=admin,ou=people,dc=example,dc=org
+    member: uid=apiadmin,ou=people,dc=example,dc=org
 
-    dn: cn=apps,ou=groups,dc=example,dc=org
-    objectClass: groupOfUniqueNames
+    dn: cn=appuser,ou=groups,dc=example,dc=org
+    objectClass: groupOfNames
     objectClass: top
-    cn: apps
-    uniqueMember: uid=app,ou=people,dc=example,dc=org
+    cn: appuser
+    member: uid=application,ou=people,dc=example,dc=org
 
-    dn: cn=devs,ou=groups,dc=example,dc=org
-    objectClass: groupOfUniqueNames
+    dn: cn=developers,ou=groups,dc=example,dc=org
+    objectClass: groupOfNames
     objectClass: top
-    cn: devs
-    uniqueMember: uid=dev,ou=people,dc=example,dc=org
+    cn: developers
+    member: uid=developer,ou=people,dc=example,dc=org
+    member: uid=developer2,ou=people,dc=example,dc=org
+    member: uid=developer3,ou=people,dc=example,dc=org
+
