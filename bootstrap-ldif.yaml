@@ -16,17 +16,21 @@ data:
     description: Users in the org
     ou: users
 
-    dn: ou=people,dc=example,dc=org
-    objectClass: organizationalUnit
-    description: All people in organization
-    ou: people
-
     dn: ou=groups,dc=example,dc=org
     objectClass: organizationalUnit
     objectClass: top
     ou: groups
 
-
+    dn: uid=admin,dc=example,dc=org
+    objectClass: inetOrgPerson
+    objectClass: organizationalPerson
+    objectClass: person
+    objectClass: top
+    cn: admin
+    sn: admin
+    uid: admin
+    userPassword:: e1NTSEF9cThhMWVuQWFncElsb3grWm5MQ09PMWJDVnJUcklRWDc=
+    
     dn: cn=user01,ou=users,dc=example,dc=org
     cn: User1
     cn: user01
@@ -53,7 +57,7 @@ data:
     gidNumber: 1001
     homeDirectory: /home/user02
 
-    dn: uid=application,ou=people,dc=example,dc=org
+    dn: uid=application,ou=users,dc=example,dc=org
     objectClass: inetOrgPerson
     objectClass: organizationalPerson
     objectClass: person
@@ -63,7 +67,7 @@ data:
     uid: application
     userPassword:: YXBw
 
-    dn: uid=apiadmin,ou=people,dc=example,dc=org
+    dn: uid=apiadmin,ou=users,dc=example,dc=org
     objectClass: inetOrgPerson
     objectClass: organizationalPerson
     objectClass: person
@@ -73,7 +77,7 @@ data:
     uid: apiadmin
     userPassword:: YWRtaW4=
 
-    dn: uid=developer,ou=people,dc=example,dc=org
+    dn: uid=developer,ou=users,dc=example,dc=org
     objectClass: inetOrgPerson
     objectClass: organizationalPerson
     objectClass: person
@@ -83,7 +87,7 @@ data:
     uid: developer
     userPassword:: e1NTSEF9cThhMWVuQWFncElsb3grWm5MQ09PMWJDVnJUcklRWDc=
 
-    dn: uid=developer2,ou=people,dc=example,dc=org
+    dn: uid=developer2,ou=users,dc=example,dc=org
     objectClass: inetOrgPerson
     objectClass: organizationalPerson
     objectClass: person
@@ -93,7 +97,7 @@ data:
     uid: developer2
     userPassword:: e1NTSEF9cThhMWVuQWFncElsb3grWm5MQ09PMWJDVnJUcklRWDc=
 
-    dn: uid=developer3,ou=people,dc=example,dc=org
+    dn: uid=developer3,ou=users,dc=example,dc=org
     objectClass: inetOrgPerson
     objectClass: organizationalPerson
     objectClass: person
@@ -113,19 +117,19 @@ data:
     objectClass: groupOfNames
     objectClass: top
     cn: admins
-    member: uid=apiadmin,ou=people,dc=example,dc=org
+    member: uid=apiadmin,ou=users,dc=example,dc=org
 
     dn: cn=appuser,ou=groups,dc=example,dc=org
     objectClass: groupOfNames
     objectClass: top
     cn: appuser
-    member: uid=application,ou=people,dc=example,dc=org
+    member: uid=application,ou=users,dc=example,dc=org
 
     dn: cn=developers,ou=groups,dc=example,dc=org
     objectClass: groupOfNames
     objectClass: top
     cn: developers
-    member: uid=developer,ou=people,dc=example,dc=org
-    member: uid=developer2,ou=people,dc=example,dc=org
-    member: uid=developer3,ou=people,dc=example,dc=org
+    member: uid=developer,ou=users,dc=example,dc=org
+    member: uid=developer2,ou=users,dc=example,dc=org
+    member: uid=developer3,ou=users,dc=example,dc=org
 
